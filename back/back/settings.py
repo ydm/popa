@@ -37,9 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'base',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +121,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# [POPA] Custom settings follow.
+
+INSTALLED_APPS += [
+    'corsheaders',
+
+    'base',
+    'rest_framework',
+]
+
+MIDDLEWARE = [
+    # Should be "as high as possible".
+    'corsheaders.middleware.CorsMiddleware',
+] + MIDDLEWARE
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
