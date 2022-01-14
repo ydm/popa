@@ -1,0 +1,24 @@
+[
+  {
+    "model": "base.node",
+    "pk": 1,
+    "fields": {
+      "created": "20:39:15.605",
+      "modified": "20:41:04.912",
+      "author": "Gencho",
+      "title": "Qwe",
+      "body": "qweqweqwe asd zxc <h1> qweqweqweqwe </h1>\r\n\r\n# qwe"
+    }
+  },
+  {
+    "model": "base.reply",
+    "pk": 1,
+    "fields": {
+      "created": "20:39:15.605",
+      "modified": "20:41:04.912",
+      "node": 1,
+      "author": "asd",
+      "body": "_)_"
+    }
+  }
+]
