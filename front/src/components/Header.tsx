@@ -1,6 +1,5 @@
 import React from "react";
 import { Empty } from "../definitions";
-import Container from "react-bootstrap/Container";
 
 const Header: React.VFC = (
     _props: Empty,
@@ -8,7 +7,7 @@ const Header: React.VFC = (
 ): React.ReactElement => {
     return (
         <header className="p-3 mb-3 border-bottom">
-            <Container>
+            <div className="container">
                 <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <a
                         className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
@@ -38,7 +37,7 @@ const Header: React.VFC = (
                         </li>
                     </ul>
                 </div>
-            </Container>
+            </div>
         </header>
     );
 };

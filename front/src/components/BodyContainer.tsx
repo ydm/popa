@@ -1,15 +1,16 @@
 import React, { useEffect, useReducer } from "react";
 import { Empty } from "../definitions";
-import Body, { Entry } from "./Body";
+import Body from "./Body";
+import { Post } from "./types";
 
 type State = {
     state: "initial" | "done";
-    dataset: Entry[];
+    dataset: Post[];
 };
 
 type Action = {
     type: "fail" | "update";
-    dataset: Entry[];
+    dataset: Post[];
 };
 
 const reducer: React.Reducer<State, Action> = (
@@ -53,7 +54,7 @@ const BodyContainer: React.FC = (
             },
         })
             // Turn into text.
-            .then((resp: Response): Promise<Entry[]> => {
+            .then((resp: Response): Promise<Post[]> => {
                 if (resp.ok) {
                     return resp.json();
                 } else {
@@ -64,7 +65,7 @@ const BodyContainer: React.FC = (
             })
 
             // Use result.
-            .then((entries: Entry[]) => {
+            .then((entries: Post[]) => {
                 dispatch({
                     type: "update",
                     dataset: entries,
