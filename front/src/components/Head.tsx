@@ -26,14 +26,6 @@ const Head: React.VFC = (
                     </li>
                     <li>
                         <a
-                            href="/complain"
-                            className="nav-link px-2 link-secondary text-uppercase"
-                        >
-                            Оплачи се
-                        </a>
-                    </li>
-                    <li>
-                        <a
                             href="/rules"
                             className="nav-link px-2 link-secondary  text-uppercase"
                         >
