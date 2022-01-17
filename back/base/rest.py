@@ -5,9 +5,9 @@ from base.models import Node, Reply
 class ReplySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Reply
-        fields = ['created', 'modified', 'author', 'body', 'html']
-        read_only_fields = ['created', 'modified', 'html']
-        extra_kwargs = {'body': {'write_only': True}}
+        fields = ['created', 'modified', 'author', 'body']
+        read_only_fields = ['created', 'modified']
+        # extra_kwargs = {'body': {'write_only': True}}
 
 
 class NodeSerializer(serializers.HyperlinkedModelSerializer):
@@ -15,9 +15,9 @@ class NodeSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Node
-        fields = ['created', 'modified', 'author', 'title', 'body', 'html', 'replies']
-        read_only_fields = ['created', 'modified', 'html']
-        extra_kwargs = {'body': {'write_only': True}}
+        fields = ['created', 'modified', 'author', 'title', 'body', 'replies']
+        read_only_fields = ['created', 'modified']
+        # extra_kwargs = {'body': {'write_only': True}}
 
     # TODO: Add pagination!
     # def get_queryset(self):

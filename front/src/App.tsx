@@ -1,18 +1,24 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Head from "./components/Head";
+
 import { Empty } from "./definitions";
 
-import Header from "./components/Header";
-import BodyContainer from "./components/BodyContainer";
+import HomeScreen from "./screens/HomeScreen";
+import RulesScreen from "./screens/RulesScreen";
 
 const App: React.VFC = (
     _props: Empty,
     _context?: unknown
 ): React.ReactElement => {
     return (
-        <>
-            <Header />
-            <BodyContainer />
-        </>
+        <BrowserRouter>
+            <Head />
+            <Routes>
+                <Route path="/" element={<HomeScreen />} />
+                <Route path="rules" element={<RulesScreen />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 

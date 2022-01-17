@@ -3,14 +3,16 @@ import { Empty } from "../definitions";
 import Body from "./Body";
 import { Post } from "./types";
 
+type Dataset = Post[];
+
 type State = {
     state: "initial" | "done";
-    dataset: Post[];
+    dataset: Dataset;
 };
 
 type Action = {
     type: "fail" | "update";
-    dataset: Post[];
+    dataset: Dataset;
 };
 
 const reducer: React.Reducer<State, Action> = (
@@ -27,35 +29,34 @@ const reducer: React.Reducer<State, Action> = (
     }
 };
 
-const initialState: State = {
-    state: "initial",
-    dataset: [],
-};
-
 const BodyContainer: React.FC = (
     _props: Empty,
     _context?: unknown
 ): React.ReactElement => {
+    const initialState: State = {
+        state: "initial",
+        dataset: [],
+    };
     const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(dispatch);
 
     useEffect(() => {
-        // Fetch balances ONLY IF this is the
-        // first time component is rendered.
+        // Fetch balances ONLY IF this is the first time component is rendered.
         if (state.state !== "initial") {
             return;
         }
 
         const url = "http://localhost:8000/api/nodes";
-
-        fetch(url, {
+        const requestInit = {
             headers: {
                 Accept: "application/json",
             },
-        })
-            // Turn into text.
-            .then((resp: Response): Promise<Post[]> => {
+        };
+
+        fetch(url, requestInit)
+            // Parse into an object.
+            .then((resp: Response): Promise<Dataset> => {
                 if (resp.ok) {
+                    // TODO: Optionally I can inspect the data structure here and make sure it's actually good.
                     return resp.json();
                 } else {
                     throw new Error(
@@ -63,12 +64,11 @@ const BodyContainer: React.FC = (
                     );
                 }
             })
-
             // Use result.
-            .then((entries: Post[]) => {
+            .then((dataset: Dataset) => {
                 dispatch({
                     type: "update",
-                    dataset: entries,
+                    dataset: dataset,
                 });
             });
     });

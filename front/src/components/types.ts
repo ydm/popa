@@ -2,7 +2,7 @@ export type Reply = {
     created: string;
     modified: string;
     author: string;
-    html: string;
+    body: string;
 };
 
 export type Post = {
@@ -10,10 +10,6 @@ export type Post = {
     modified: string;
     author: string;
     title: string;
-    html: string;
+    body: string;
     replies: Reply[];
-};
-
-export type PostProps = {
-    post: Post;
 };

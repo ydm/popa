@@ -14,11 +14,6 @@ class Node(models.Model):
         return f'{self.author}: {self.title}'
 
     @property
-    def html(self):
-        import markdown
-        return markdown.markdown(escape(self.body))
-
-    @property
     def replies(self):
         # TODO: Dummy LIMIT clause.
         return self.reply_set.all()[:128]
@@ -38,8 +33,3 @@ class Reply(models.Model):
     def __str__(self):
         excerpt = self.body[:16]
         return f'{self.author}: {excerpt}...'
-
-    @property
-    def html(self):
-        import markdown
-        return markdown.markdown(escape(self.body))
