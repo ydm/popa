@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from "react";
 import { Empty } from "../definitions";
 import Body from "./Body";
-import { Post } from "./types";
+import { Entry } from "./types";
 
-type Dataset = Post[];
+type Dataset = Entry[];
 
 type State = {
     state: "initial" | "done";

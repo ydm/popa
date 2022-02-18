@@ -1,21 +1,22 @@
 import React from "react";
-import { Post } from "./types";
+import { Entry } from "./types";
 
 import "./PostHeader.css";
 
-type PostHeaderProps = {
-    post: Post;
-    avatar?: string;
+type Props = {
+    post: Entry;
 };
 
-const PostHeader: React.VFC<PostHeaderProps> = (
-    props: PostHeaderProps,
+const PostHeader: React.VFC<Props> = (
+    props: Props,
     _context?: unknown
 ): React.ReactElement => {
-    const avatar = props.avatar || "img/pepe.png";
+    const avatar = props.post.authorAvatar || "img/pepe.png";
+
+    const tail = props.post.created ? <>| {props.post.created}</> : <></>;
 
     return (
-        <div className="row">
+        <div className="row x-post-header">
             <div className="col">
                 <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                     <div className="d-flex pe-3">
@@ -36,9 +37,9 @@ const PostHeader: React.VFC<PostHeaderProps> = (
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col lh-1">
+                            <div className="col lh-1 pt-1">
                                 <span className="font-italic x-post-header-ts">
-                                {props.post.author} | {props.post.created}
+                                    {props.post.author} {tail}
                                 </span>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import PostWidget from "../components/PostWidget";
-import { Post } from "../components/types";
+import { Entry } from "../components/types";
 import { Empty } from "../definitions";
 
 const RulesScreen: React.VFC = (
@@ -16,10 +16,11 @@ const RulesScreen: React.VFC = (
 
 *Амин!*
     `;
-        const post: Post = {
+        const post: Entry = {
         created: "∞",
         modified: "",
         author: "Попа",
+        authorAvatar: "img/popa.png",
         title: "Правила",
         body: body,
         replies: [],
@@ -29,7 +30,7 @@ const RulesScreen: React.VFC = (
             <div className="row">
                 <div className="col-lg-3"></div>
                 <div className="col-lg-6">
-                    <PostWidget avatar="img/popa.png" post={post} />{" "}
+                    <PostWidget post={post} />{" "}
                 </div>
                 <div className="col-lg-3"></div>
             </div>

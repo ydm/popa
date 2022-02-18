@@ -1,10 +1,11 @@
 import React from "react";
 import PostWidget from "./PostWidget";
+import { Entry } from "./types";
 
-import { Post } from "./types";
+import "./Body.css";
 
 type Props = {
-    entries: Post[];
+    entries: Entry[];
 };
 
 const Body: React.VFC<Props> = (
@@ -12,7 +13,7 @@ const Body: React.VFC<Props> = (
     _context?: unknown
 ): React.ReactElement => {
     const xs = props.entries.map(
-        (post: Post, index: number, _array: Post[]): JSX.Element => {
+        (post: Entry, index: number, _array: Entry[]): JSX.Element => {
             return <PostWidget key={index} post={post} />;
         }
     );

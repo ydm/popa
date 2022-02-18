@@ -1,15 +1,9 @@
-export type Reply = {
+export type Entry = {
     created: string;
     modified: string;
     author: string;
-    body: string;
-};
-
-export type Post = {
-    created: string;
-    modified: string;
-    author: string;
+    authorAvatar: string;
     title: string;
     body: string;
-    replies: Reply[];
+    replies: Entry[];
 };

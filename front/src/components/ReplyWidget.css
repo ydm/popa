@@ -1,0 +1,8 @@
+.x-reply-widget {
+    background-color: rgb(223, 224, 225);
+    border: 1px solid rgb(95, 103, 110);
+}
+
+.x-reply-widget:first-child {
+    margin-top: 1rem !important;
+}

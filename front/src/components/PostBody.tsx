@@ -1,19 +1,19 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-import { Post } from "./types";
+import { Entry } from "./types";
 
-type PostBodyProps = {
-    post: Post;
+type Props = {
+    post: Entry;
 };
 
-const PostBody: React.VFC<PostBodyProps> = (
-    props: PostBodyProps,
+const PostBody: React.VFC<Props> = (
+    props: Props,
     _context?: unknown
 ): React.ReactElement => {
     return (
-        <div className="row">
-            <div className="col mt-3 mx-3">
+        <div className="row x-post-body">
+            <div className="col mt-3 mr-3">
                 <ReactMarkdown>{props.post.body}</ReactMarkdown>
             </div>
         </div>
